@@ -1,5 +1,5 @@
 
-import { BookSchema } from 'src/entities/schema/book.schema';
+import { BookSchema } from 'src/entities/schema/book.entity';
 import { EntityRepository,Repository } from 'typeorm';
 
 @EntityRepository(BookSchema)

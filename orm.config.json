@@ -6,12 +6,12 @@
   "database": "bidea",
   "port": 5432,
   "synchronize": true,
-  "entities": ["src/modules/**/**/*.entity{.ts,.js}"],
+  "entities":  ["dist/entities/**/*.js"],
   "migrations": ["src/database/migrations/*{.ts,.js}"],
   "seeds": ["./src/database/seeds/*{.ts,.js}"],
   "factories": ["./src/database/factories/*{.ts,.js}"],
   "cli": {
-    "entitiesDir": "src/entity",
+    "entitiesDir": "src/entities",
     "migrationsDir": "src/database/migrations"
   }
 }

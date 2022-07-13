@@ -1,6 +1,6 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { join } from 'path';
 import environment from 'src/config/env';
-import { BookSchema } from 'src/entities/schema/book.schema';
 
 export const DatabaseProvider = [
   TypeOrmModule.forRoot({
@@ -12,8 +12,10 @@ export const DatabaseProvider = [
     database: environment.DATABASE_NAME,
     port: 5432,
     synchronize: true,
-    entities: [BookSchema],
-    logging: false,
-    migrations: [__dirname + '../migrations/*{.ts,.js}'],
+    entities: ['../entities/schema/*.entity.js'],
+    logging: false
   }),
 ];
+const path= join(__dirname, '**','**',  '*.entity.{ts,js}')
+
+console.log(path);
