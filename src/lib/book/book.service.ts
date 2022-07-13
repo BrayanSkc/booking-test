@@ -30,7 +30,7 @@ export class BookService {
         convertDateStringToTimestamp(payload.startDate) >
         convertDateStringToTimestamp(payload.endDate)
       ) {
-        throw new Error('The endDate is not valid');
+        throw new Error('Start date cannot be greater than end date');
       }
 
       if (payload.discountCode) {

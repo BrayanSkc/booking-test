@@ -21,19 +21,15 @@ export class BookController {
     @Response() res,
     @Body() payload: BookDto,
   ): Promise<Response> {
-    const data = await this.bookService.createBook(payload);
+    await this.bookService.createBook(payload);
     return res
       .status(HttpStatus.CREATED)
-      .json({ status: HttpStatus.CREATED, data });
+      .json({ status: HttpStatus.CREATED, data: 'Book Accepted' });
   }
 
   @Get('/')
-  async getHomeReservation(
-    @Response() res,
-  ): Promise<Response> {
+  async getHomeReservation(@Response() res): Promise<Response> {
     const data = await this.bookService.filterByField({});
-    return res
-      .status(HttpStatus.OK)
-      .json({ status: HttpStatus.OK, data });
+    return res.status(HttpStatus.OK).json({ status: HttpStatus.OK, data });
   }
 }

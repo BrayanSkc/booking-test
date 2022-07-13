@@ -6,16 +6,15 @@ import {
   IsString,
   Min,
   Max,
-  Matches,
+  Matches
 } from 'class-validator';
-import { IsOnlyDate } from 'src/helpers';
-
+import { convertDateStringToTimestamp, IsOnlyDate } from 'src/helpers';
 
 export class BookDto {
   @IsString()
   @IsNotEmpty()
-  @Matches(/([0-9]){7,8}(-)[0-9]{1}/,{
-    message: 'Invalid id, please try again'
+  @Matches(/([0-9]){7,8}(-)[0-9]{1}/, {
+    message: 'Invalid id, please try again',
   })
   @Length(9, 10)
   id: string;
@@ -58,4 +57,13 @@ export class BookDto {
   @IsOnlyDate()
   @IsNotEmpty()
   endDate: string;
+
+  constructor() {
+    if (
+      convertDateStringToTimestamp(this.startDate) >
+      convertDateStringToTimestamp(this.endDate)
+    ) {
+      throw new Error('Start date cannot be greater than end date');
+    }
+  }
 }
