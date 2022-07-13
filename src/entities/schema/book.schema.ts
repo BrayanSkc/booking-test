@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 @Entity('book')
-export class Book extends BaseEntity {
+export class BookSchema extends BaseEntity {
   @PrimaryColumn({ type: 'varchar', length: 10, nullable: false })
   id: string;
 

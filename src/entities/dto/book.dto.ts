@@ -39,7 +39,7 @@ export class BookDto {
   @IsString()
   @IsNotEmpty()
   @Length(9, 20)
-  phoneNumber: number;
+  phoneNumber: string;
 
   @IsString()
   @IsOptional()

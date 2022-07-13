@@ -1,7 +1,6 @@
 import {
   Controller,
   Response,
-  Req,
   Post,
   Body,
   UsePipes,
@@ -10,7 +9,6 @@ import {
 } from '@nestjs/common';
 import { BookDto } from 'src/entities/dto/book.dto';
 import { BookService } from './book.service';
-import { Request } from 'express';
 
 @UsePipes(ValidationPipe)
 @Controller('book')
@@ -21,11 +19,10 @@ export class BookController {
   async createHomeReservation(
     @Response() res,
     @Body() payload: BookDto,
-    @Req() req: Request,
   ): Promise<Response> {
-    console.log('saludar');
+    const data = await this.bookService.createBook(payload);
     return res
       .status(HttpStatus.CREATED)
-      .json({ status: HttpStatus.CREATED, data: true });
+      .json({ status: HttpStatus.CREATED, data });
   }
 }
