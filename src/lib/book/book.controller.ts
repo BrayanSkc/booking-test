@@ -6,6 +6,7 @@ import {
   UsePipes,
   ValidationPipe,
   HttpStatus,
+  Get,
 } from '@nestjs/common';
 import { BookDto } from 'src/entities/dto/book.dto';
 import { BookService } from './book.service';
@@ -24,5 +25,15 @@ export class BookController {
     return res
       .status(HttpStatus.CREATED)
       .json({ status: HttpStatus.CREATED, data });
+  }
+
+  @Get('/')
+  async getHomeReservation(
+    @Response() res,
+  ): Promise<Response> {
+    const data = await this.bookService.filterByField({});
+    return res
+      .status(HttpStatus.OK)
+      .json({ status: HttpStatus.OK, data });
   }
 }

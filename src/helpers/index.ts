@@ -28,3 +28,6 @@ const getDateFormat = () => {
   yourDate = new Date(yourDate.getTime() - offset * 60 * 1000);
   return yourDate.toISOString().split('T')[0];
 };
+
+export const convertDateStringToTimestamp = (date: string) =>
+  new Date(date).getTime();

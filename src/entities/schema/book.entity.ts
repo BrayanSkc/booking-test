@@ -21,7 +21,7 @@ export class BookSchema extends BaseEntity {
   @Column({ default: 18, type: 'integer', nullable: false })
   age: number;
 
-  @Column({ type: 'varchar', length: 20, nullable: false, unique: true })
+  @Column({ type: 'varchar', length: 20, nullable: false, })
   phoneNumber: string;
 
   @Column({ type: 'varchar', length: 8, nullable: true })
